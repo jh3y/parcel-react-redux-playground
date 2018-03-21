@@ -10,7 +10,21 @@ import { Page } from '../../components/Common/'
 import NetworkIndicator from '../../components/NetworkIndicator'
 import Title from '../../components/Title/'
 import Content from '../../components/DataTable'
+import styled from 'styled-components'
 
+const pos = args => {
+  const [top, right, bottom, left] = args.split(' ')
+  return { top, right, bottom, left }
+}
+
+const Emoji = styled.div.attrs({ chosen: p => (p.chosen ? p.chosen : '🦄') })`
+  &:after {
+    content: "${p => p.chosen}";
+    font-size: 10rem;
+    position: fixed;
+    ${pos('50% null 20vh null')}
+  }
+`
 class Home extends Component {
   state = {
     theme: 'light',
@@ -24,6 +38,7 @@ class Home extends Component {
           <Title text="Home" />
           <NetworkIndicator active={busy} />
           <Content busy={busy} data={data} onClick={getData} />
+          <Emoji chosen="🦄" />
           <button
             onClick={() =>
               this.setState({

@@ -5,6 +5,7 @@ import ThemeContext from '../../contexts/theme.context'
 import { Indicator } from './networkindicator.style'
 
 import styled from 'styled-components'
+
 const NetworkActivityIndicator = styled.div.attrs({ pos: 20, size: 3 })`
   position: fixed;
   right: ${p => p.pos}px;
